@@ -1,7 +1,5 @@
 # devops_exercise
 
-
-
 ***Create simple spring boot aplication and then build it in a Jenkins
 pipeline every time a change is pushed to version control and then create
 docker image and push to docker hub.***
