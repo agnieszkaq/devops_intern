@@ -7,6 +7,14 @@ pipeline {
         maven 'Maven 3.3.9' 
         jdk 'jdk8' 
     }
+   
+    stages {     
+    stage('Maven Install') {
+      agent {         
+       docker {          
+         image 'maven:3.5.0'         
+     }       
+  }       
     stages {
         stage ('Initialize') {
             steps {
