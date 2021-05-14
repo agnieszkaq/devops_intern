@@ -8,15 +8,17 @@ pipeline {
         jdk 'jdk8' 
     }
    
-    stages {     
+
+    stages {
+       
     stage('Maven Install') {
       agent {         
        docker {          
          image 'maven:3.5.0'         
-     }       
-  }       
-    }
-    stages {
+               }        
+             }
+          }
+       
         stage ('Initialize') {
             steps {
                 sh '''
