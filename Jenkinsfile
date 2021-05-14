@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    
+    enviroment {
+        dockerImage =''
+    }
+    
     triggers {
         githubPush()
     }
