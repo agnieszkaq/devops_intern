@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image "maven:3.3.9-jdk-8"
+            label "docker"
+        }
+    }
     triggers {
         githubPush()
     }
@@ -23,15 +28,6 @@ pipeline {
 
             }
         }
-        
-        stage ('docker image build')
-        {
-            steps {
-                   
-                        sh 'mvn dockerfile:build'
-                         
-                  }
-          }
         
         stage ('Test') {
             steps {
