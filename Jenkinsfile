@@ -10,21 +10,25 @@ pipeline {
    
 
    stages {
-      stage('Maven Install') {
+      
+        stages {
+    stage('Maven Install') {
       agent {
         docker {
           image 'maven:3.5.0'
         }
       }
+      steps {
+        sh 'mvn clean install'
+      }
+    }
+         
         stage ('Initialize') {
             steps {
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
-                ''' 
-               
-            
-               
+                '''                
             }
         }
 
