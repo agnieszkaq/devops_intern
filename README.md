@@ -6,6 +6,7 @@ pipeline every time a change is pushed to version control and then create
 docker image and push to docker hub.***
 
 
+
 ### Stage 1
 *Create a simple microservice with a single HTTP endpoint based on spring
 boot, to check that given string is a Palindrome.
