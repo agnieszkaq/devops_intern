@@ -16,6 +16,11 @@ pipeline {
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 ''' 
+               
+            
+               def dockerHome = tool 'myDocker'
+               env.PATH = "${dockerHome}/bin:${env.PATH}"
+   
             }
         }
 
