@@ -1,7 +1,5 @@
 pipeline {
-     agent {
-        docker { image 'node:14-alpine' }
-    }
+   agent any
     triggers {
         githubPush()
     }
@@ -32,5 +30,13 @@ pipeline {
 
             }
         }
+         
+      stage('Docker Build') {
+      agent any
+      steps {
+        sh 'docker build -t devops_intern .'
+      }
+    }
+         
     }
 }
