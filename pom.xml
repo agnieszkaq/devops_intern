@@ -53,7 +53,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>devops</finalName>
+		<finalName>devops_intern</finalName>
 	</build>
 
 </project>
