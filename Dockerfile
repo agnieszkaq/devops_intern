@@ -1,4 +1,3 @@
 FROM openjdk:8
-ADD ./target/devops_intern.jar devops_intern.jar
-EXPOSE 8083
-ENTRYPOINT ["java","-jar","devops_intern.jar"]
+COPY ./target/devops_intern.jar /home/devops_intern.jar
+CMD ["java","-jar","devops_intern.jar"]
