@@ -12,17 +12,17 @@ pipeline {
    stages {
       
         stages {
-    stage('Maven Install') {
-      agent {
-        docker {
-          image 'maven:3.5.0'
+          stage('Maven Install') {
+           agent {
+             docker {
+                image 'maven:3.5.0'
+                    }
+                 }
+            steps {
+                 sh 'mvn clean install'
+                  }
+                }
         }
-      }
-      steps {
-        sh 'mvn clean install'
-      }
-    }
-         
         stage ('Initialize') {
             steps {
                 sh '''
