@@ -18,9 +18,7 @@ pipeline {
                 ''' 
                
             
-               def dockerHome = tool 'myDocker'
-               env.PATH = "${dockerHome}/bin:${env.PATH}"
-   
+               
             }
         }
 
@@ -41,7 +39,7 @@ pipeline {
       stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build -t devops_intern .'
+        sh 'myDocker build -t devops_intern .'
       }
     }
          
