@@ -10,6 +10,12 @@ pipeline {
    
 
    stages {
+      stage('Maven Install') {
+      agent {
+        docker {
+          image 'maven:3.5.0'
+        }
+      }
         stage ('Initialize') {
             steps {
                 sh '''
@@ -39,7 +45,7 @@ pipeline {
       stage('Docker Build') {
       agent any
       steps {
-        sh 'myDocker build -t devops_intern .'
+        sh 'docker build -t devops_intern .'
       }
     }
          
