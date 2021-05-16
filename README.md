@@ -164,7 +164,7 @@ stage ('docker image build'){
 After git commit, Spring Soot application is added to Docker Hub!
 To download Palindrome Spring Boot Application, write in console:
 ```
-docker push agnieszkaq/palindrome:latest
+docker pull agnieszkaq/palindrome:latest
 ```
 Then run, conteiner with application:
 ```
