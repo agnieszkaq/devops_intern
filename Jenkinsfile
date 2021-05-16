@@ -9,8 +9,10 @@ pipeline {
     }
    
    environment {
-    DOCKERHUB_CREDENTIALS = credentials('agnieszkaq-dockerhub')
-   }
+   registry = "agnieszkaq//palindrome"
+   registryCredential = 'agnieszkaq-dockerhub'
+   dockerImage = ''
+}
 
    stages {
         stage ('Initialize') {
@@ -22,12 +24,7 @@ pipeline {
             }
         }
       
-        stage('Docker Hub Login'){
-    steps{
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-    }
-}
-
+  
         stage ('Build') {
             steps {
                 sh 'mvn package'
