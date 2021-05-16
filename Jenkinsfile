@@ -37,6 +37,12 @@ pipeline {
                   }
           }
       
+       stage ('docker runnbuild'){
+            steps {
+                sh 'docker run -p 8083:8083 spring_app'
+                  }
+          }
+      
   
    }
 }
