@@ -53,8 +53,8 @@ pipeline {
                   }
           }
       
-to docker hub
- stage ('docker push '){
+
+ stage ('docker push  to docker hub'){
             steps {
                 sh 'docker push spring_boot_app'
                   }
