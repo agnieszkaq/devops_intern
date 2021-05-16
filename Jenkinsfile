@@ -56,7 +56,7 @@ pipeline {
 
  stage ('docker push  to docker hub'){
             steps {
-               sh 'docker tag spring_boot_app:latest agnieszkaq/palindrome:myfirstpush'
+               sh 'docker tag spring_boot_app agnieszkaq/palindrome:myfirstpush'
                sh 'docker push agnieszkaq/palindrome:myfirstpush'
                   }
           }
