@@ -172,6 +172,7 @@ docker run -p 8081:8081 agnieszkaq/palindrome:latest
 ```
 # The application is running!
 Now, in browser You can go to: *http://localhost:8081/isPalindrome?text=yourSpecyficWord*, to check is your word is palindrome.
+Also, You can see my repository on Docker Hub: https://hub.docker.com/repository/docker/agnieszkaq/palindrome
 
 ### Stage 7
 *Write README.md to allow all newbe clone source code of you application
