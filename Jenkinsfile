@@ -11,7 +11,6 @@ pipeline {
    environment {
    registry = "agnieszkaq//palindrome"
    registryCredential = 'agnieszkaq-dockerhub'
-   dockerImage = 'spring_boot_app'
 }
 
    stages {
@@ -43,11 +42,11 @@ pipeline {
                   }
           }
       
-      stage('Deploy Image') {
+      stage('Push to Docker Hub') {
   steps{
     script {
       docker.withRegistry( '', registryCredential ) {
-        dockerImage.push()
+        sh 'docker push spring_boot_app'
       }
     }
   }
