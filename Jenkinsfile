@@ -42,7 +42,7 @@ pipeline {
       
       stage('Docker Hub Login'){
     steps {
-        withDockerRegistry([ credentialsId: "agnieszkaq-dockerhub", url: "" ]) {
+        withDockerRegistry([ "https://registry.hub.docker.com", "agnieszkaq-dockerhub" ]) {
           sh  'docker push spring_boot_app'
         }
 }
