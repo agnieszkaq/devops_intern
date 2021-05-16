@@ -8,8 +8,8 @@ public class PalindromeApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PalindromeApplication.class, args);
-		System.out.print("Spring Boot Application is running!");
-		System.out.print("Write in browser, http://localhost:8080/isPalindrome?text=yourSpecyficWord");
+		System.out.println("-------------- SPRING BOOT APPLICATION IS RUNNING! --------------");
+		System.out.println("Write in browser: http://localhost:8081/isPalindrome?text=yourSpecyficWord");
 	
 	}
 
