@@ -49,14 +49,14 @@ pipeline {
       
          stage ('docker image build'){
             steps {
-                sh 'docker build . -t spring_boot_app'
+                sh 'docker build . -t spring_boot_app/oracle-java:8 '
                   }
           }
       
 
  stage ('docker push  to docker hub'){
             steps {
-                sh 'docker push spring_boot_app'
+                sh 'docker push spring_boot_app/oracle-java:8'
                   }
           }
 
