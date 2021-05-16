@@ -36,9 +36,10 @@ There are steps for Linux Mint (is my system):
   sudo apt install docker.io
   sudo systemctl start docker
   ```
-2. Next step is to create Jenkins image in Docker:
+2. Next step is to create Jenkins container in Docker, with special privileged, that u can later in **Stage 5** build Docker Image inside Jenkins, wtihout this You will get errors (docker not found), like me before, when I did'n know about this:
   ```
-  docker run -p 8080:8080 -p 50000:50000 -d -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+  docker run -u 0 --privileged --name jenkins -d -p 8080:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+
   docker ps
   ```
   get container ID numer from Jenkins image, and then write:
@@ -93,6 +94,28 @@ Next:
 ### Stage 5
 *Wrap your application in a Docker image, building it in Jenkins. Check
 that your container is running.*
+
+1. In Linux console, find your Jenkins Container ID:
+```
+docker ps
+```
+2. Go inside the container:
+```
+docker exec -it -u root CONTAINER_ID /bin/bash
+```
+3. Inside directory with the project *:/var/jenkins_home/workspace/devops_intern*, build the project:
+```
+docker build . -t spring_app
+```
+4. Then, check if the continer with Spring Boot Application is running, by putting command:
+```
+docker run -p 8083:8083 spring_app
+
+```
+Below u can see the print screen from console:
+
+![image](https://user-images.githubusercontent.com/59511312/118398687-08730680-b65a-11eb-9a6f-a2648f963b8e.png)
+
 
 ### Stage 6
 *Extend your jenkins pipeline to include stages to build docker image and
