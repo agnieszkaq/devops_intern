@@ -98,10 +98,6 @@ Next:
 ![image](https://user-images.githubusercontent.com/59511312/118279307-47268680-b4cb-11eb-8658-40a025326ac9.png)
 
 
-You can see, that on adress *http://localhost:8083/isPalindrome?text=yourSpecyficWord*, the application is running.
-![image](https://user-images.githubusercontent.com/59511312/118399556-0743d880-b65e-11eb-9659-3f0ff53bd174.png)
-
-
 ### Stage 5
 *Wrap your application in a Docker image, building it in Jenkins. Check
 that your container is running.*
@@ -127,6 +123,8 @@ Below u can see the print screen from console:
 
 ![image](https://user-images.githubusercontent.com/59511312/118398687-08730680-b65a-11eb-9a6f-a2648f963b8e.png)
 
+You can see, that on adress *http://localhost:8083/isPalindrome?text=yourSpecyficWord*, the application is running.
+![image](https://user-images.githubusercontent.com/59511312/118399556-0743d880-b65e-11eb-9659-3f0ff53bd174.png)
 
 ### Stage 6
 *Extend your jenkins pipeline to include stages to build docker image and
