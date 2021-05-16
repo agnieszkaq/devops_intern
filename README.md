@@ -116,30 +116,62 @@ docker build . -t spring_app
 ```
 4. Then, check if the continer with Spring Boot Application is running, by putting command:
 ```
-docker run -p 8083:8083 spring_app
+docker run -p 8081:8081 spring_app
 
 ```
 Below u can see the print screen from console:
 
 ![image](https://user-images.githubusercontent.com/59511312/118398687-08730680-b65a-11eb-9a6f-a2648f963b8e.png)
 
-You can see, that on adress *http://localhost:8083/isPalindrome?text=yourSpecyficWord*, the application is running.
+You can see, that on adress *http://localhost:8081/isPalindrome?text=yourSpecyficWord*, the application is running.
 ![image](https://user-images.githubusercontent.com/59511312/118399556-0743d880-b65e-11eb-9659-3f0ff53bd174.png)
 
 ### Stage 6
 *Extend your jenkins pipeline to include stages to build docker image and
 push it to Docker Hub (use free acount).*
 
-In Jenkinsfile add stage:
+Firstly, create Your Docker Hub account. Then, we need to generate access token, follow the steps:
+click on your username on the top right, next *Accoutn Setting* ->  *Security* -> *New access token*. Please, save the token. This token it will be added to *Manage Credentials* in Jenkins, to create connection beetween Jenkins and Docker Hub. Add this, token, this process is similary like with GitHub. 
+
+Then, we need to create repository in Docker Hub. The name of repository will be *palindrome*.
+Next, in Jenkinsfile add enviroment:
+```
+environment {
+        DOCKERHUB_CREDENTIALS = credentials('agnieszkaq-dockerhub')
+   }
+```
+and stages:
 ```
 stage ('docker image build'){
         steps {
                sh 'docker build . -t spring_boot_app'
                }
        }    
-```
-*spring_boot_app* it will be name of Spring Boot Application, that You can open, putting inboot_appconsole *docker run -p 8083:8083 spring_boot_app*
+ stage('Docker Hub Login'){
+            steps{
+               sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+              }
+         }
+     
+  stage ('Push  to docker hub'){
+            steps {
+               sh 'docker tag spring_boot_app agnieszkaq/palindrome:latest'
+               sh 'docker push agnieszkaq/palindrome:latest'
+            }
+         }
 
+```
+After git commit, Spring Soot application is added to Docker Hub!
+To download Palindrome Spring Boot Application, write in console:
+```
+docker push agnieszkaq/palindrome:latest
+```
+Then run, conteiner with application:
+```
+docker run -p 8081:8081 agnieszkaq/palindrome:latest
+```
+# The application is running!
+Now, in browser You can go to: *http://localhost:8081/isPalindrome?text=yourSpecyficWord*, to check is your word is palindrome.
 
 ### Stage 7
 *Write README.md to allow all newbe clone source code of you application
