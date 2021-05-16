@@ -8,9 +8,8 @@ pipeline {
         jdk 'jdk8' 
     }
    
-   environment {
-   registry = "agnieszkaq//palindrome"
-   registryCredential = 'agnieszkaq-dockerhub'
+  enviroment {
+    DOCKERHUB_CREDENTIALS = credentials('agnieszkaq-dockerhub')
 }
 
    stages {
@@ -22,6 +21,15 @@ pipeline {
                 '''                
             }
         }
+      
+      
+      stage('Docker Hub Login'){
+    steps{
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+    }
+}
+
+
       
   
         stage ('Build') {
@@ -42,15 +50,9 @@ pipeline {
                   }
           }
       
-      stage('Push to Docker Hub') {
-  steps{
-    script {
-      docker.withRegistry( '', registryCredential ) {
-        sh 'docker push spring_boot_app'
-      }
-    }
-  }
-}
+
+      
+      
       
   
    }
