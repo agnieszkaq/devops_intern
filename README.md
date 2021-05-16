@@ -4,7 +4,14 @@
 pipeline every time a change is pushed to version control and then create
 docker image and push to docker hub.***
 
-
+## Table of contents
+* [Stage 1](#stage-1)
+* [Stage 2](#stage-2)
+* [Stage 3](#stage-3)
+* [Stage 4](#stage-4)
+* [Stage 5](#stage-5)
+* [Stage 6](#stage-6)
+* [Stage 7](#stage-7)
 
 ### Stage 1
 *Create a simple microservice with a single HTTP endpoint based on spring
