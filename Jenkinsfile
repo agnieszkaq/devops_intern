@@ -8,7 +8,7 @@ pipeline {
         jdk 'jdk8' 
     }
    
-  enviroment {
+  environment {
     DOCKERHUB_CREDENTIALS = credentials('agnieszkaq-dockerhub')
 }
 
