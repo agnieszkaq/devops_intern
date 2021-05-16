@@ -40,16 +40,16 @@ pipeline {
             }
          }
       
-         stage ('docker image build'){
+         stage ('Image build'){
             steps {
                 sh 'docker build . -t spring_boot_app'
             }
          }
       
 
-         stage ('docker push  to docker hub'){
+         stage ('Push  to docker hub'){
             steps {
-               sh 'docker tag spring_boot_app agnieszkaq/palindromw:myfirstpush'
+               sh 'docker tag spring_boot_app agnieszkaq/palindrome:myfirstpush'
                sh 'docker push agnieszkaq/palindrome:myfirstpush'
             }
          }
