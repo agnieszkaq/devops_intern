@@ -22,16 +22,6 @@ pipeline {
             }
         }
       
-      
-      stage('Docker Hub Login'){
-    steps{
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p'
-    }
-}
-
-
-      
-  
         stage ('Build') {
             steps {
                 sh 'mvn package'
@@ -50,6 +40,13 @@ pipeline {
                   }
           }
       
+      stage('Docker Hub Login'){
+    steps {
+        withDockerRegistry([ credentialsId: "agnieszkaq-dockerhub", url: "" ]) {
+          sh  'docker push spring_boot_app'
+        }
+}
+      }
 
       
       
