@@ -33,7 +33,7 @@ pipeline {
       
          stage ('docker image build'){
             steps {
-                sh 'mvn dockerfile:build'
+                sh 'docker build . -t spring_app'
                   }
           }
       
