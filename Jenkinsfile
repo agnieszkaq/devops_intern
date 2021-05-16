@@ -33,15 +33,10 @@ pipeline {
       
          stage ('docker image build'){
             steps {
-                sh 'docker build . -t spring_app'
+                sh 'docker build . -t spring_boot_app'
                   }
           }
       
-       stage ('docker runnbuild'){
-            steps {
-                sh 'docker run -p 8083:8083 spring_app'
-                  }
-          }
       
   
    }
