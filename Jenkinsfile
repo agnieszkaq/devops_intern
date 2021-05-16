@@ -36,6 +36,7 @@ pipeline {
                 sh 'mvn dockerfile:build'
                   }
           }
-      }
+      
+   `  
    }
 }
