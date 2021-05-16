@@ -8,6 +8,9 @@ pipeline {
         jdk 'jdk8' 
     }
    
+   enviroment {
+    DOCKERHUB_CREDENTIALS = credentials('agnieszkaq-dockerhub')
+   }
 
    stages {
         stage ('Initialize') {
